@@ -1,0 +1,99 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'navigation.html' %}
+<script>
+    function checkpass(){
+        if (document.signup.pwd.value!=document.signup.cpwd.value)
+        {
+            alert("password and confirm password not matched");
+            document.signup.cpwd.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<marquee behavior="" direction="" style="font-family: monotype corsiva;font-size:25px;color:darkcyan;background-color:black; font-weight:bold;" >Recruiter Signup</marquee>
+<form action="" method="post" class="container mt-5" enctype="multipart/form-data" name="signup" onsubmit="return checkpass();">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >First Name</label>
+            <input type="text" class="form-control" name="fname" placeholder="Enter first name" pattern="[A-Za-z]{2,}" title="First name should be in letter only" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label >Last Name</label>
+            <input type="text" class="form-control" name="lname" placeholder="Enter Last name" pattern="[A-Za-z]{2,}" title="Last name should be in letter only" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >Contact</label>
+            <input type="number" class="form-control" name="contact" placeholder="Enter your contact number" pattern="[09]{2}[0-9]{8}" title="phone number should begin with 09 and followed by number and should be 10 digits" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label >company</label>
+            <input type="text" class="form-control" name="company" placeholder="Enter your company name" required>
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label >Email ID</label>
+                <input type="text" class="form-control" name="email" placeholder="Enter your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="this field accepts only beggining in letter and contain @ key followed by letter and dot" required>
+            </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-12">
+                    <label >Gender</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRaddioInline1" name="gender" class="custom-control-input" value="male" required>
+                        <label for="customRaddioInline1" class="custom-control-label">Male</label>
+                        <input type="radio" id="customRaddioInline2" name="gender" class="custom-control-input" value="female" required>
+                        <label for="customRaddioInline2" class="custom-control-label">Female</label>
+                    </div>
+                    
+                       
+                    
+                    
+                </div>
+                </div>
+                
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label >password</label>
+                    <input type="password" class="form-control" name="pwd" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label >confirm password</label>
+                    <input type="password" class="form-control" name="cpwd" placeholder="Enter password again" required>
+                </div>
+            </div> 
+                <div class="form-group col-md-12">
+                    <label>Image</label>
+                    <input type="file" class="form-control" name="image" required>
+                </div>
+            </div>
+            
+            
+            
+            
+            <input type="submit" class="btn btn-primary" width="200px" value="submit">
+    </form>
+    {% include 'footer.html'%}
+    {%ifequal error "no" %}
+    <script>
+        alert("recruiter sign up successful");
+        window.location=('{% url 'recruiter_login' %}');
+    </script>
+    {%endifequal%}
+    {% ifequal error "yes" %}
+    <script>
+        alert("Something went wrong,try again");
+    </script>
+    {% endifequal %}
+    
+
+{% endblock %}

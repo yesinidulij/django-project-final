@@ -1,0 +1,32 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'admin_navigation.html' %}
+
+<marquee behavior="" direction="" style="font-family: monotype corsiva;font-size:25px;color:darkcyan;background-color:black; font-weight:bold;" >change status of recruiter</marquee>
+<form action="" method="post" class="container mt-5">
+    {% csrf_token %}
+    <label for="">UserName</label>
+    <input type="text" class="form-control" name="uname" value="{{recruiter.user.first_name}} {{recruiter.user.last_name}}">
+    <label for="">status</label>
+    <select name="status" class="form-control">
+        <option value="Accept">Accept</option>
+        <option value="Reject">Reject</option>
+    </select>
+    <input type="submit" class="btn btn-primary" value="submit" class="btn btn-primary" style="margin-top: 2%; color:darkcyan;background-color:black;height:40px">
+</form>
+
+{% ifequal error "no" %}
+<script>
+    alert("status changed successfully");
+    window.location=('{% url 'recruiter_pending' %}');
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    alert("try again");
+</script>
+{% endifequal %}
+
+{% endblock %}

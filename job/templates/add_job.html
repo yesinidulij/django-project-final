@@ -1,0 +1,88 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'recruiter_navigation.html' %}
+
+
+
+<marquee behavior="" direction="" style="font-family: monotype corsiva;font-size:25px;color:darkcyan;background-color:black; font-weight:bold;" >
+    Add Job Details</marquee>
+<form action="" method="post" class="container mt-5" enctype="multipart/form-data" name="signup" >
+    {% csrf_token %}
+
+    
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label >Job Title</label>
+            <input type="text" class="form-control" name="jobtitle" placeholder="Enter job title" required>
+        </div>
+        </div>
+
+
+
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >start date</label>
+            <input type="date" class="form-control" name="startdate"  required>
+        </div>
+        <div class="form-group col-md-6">
+            <label >end date</label>
+            <input type="date" class="form-control" name="enddate"  required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >salary(per Month)</label>
+            <input type="text" class="form-control" name="salary"  required>
+        </div>
+        <div class="form-group col-md-6">
+            <label >company logo</label>
+            <input type="file" class="form-control" name="logo"  required>
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label >Experience(In Years)</label>
+                <input type="text" class="form-control" name="experience"  required>
+            </div>
+            <div class="form-group col-md-6">
+                <label >Location</label>
+                <input type="text" class="form-control" name="location"  required>
+            </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label >skills</label>
+                    <input type="text" class="form-control" name="skills" placeholder="skills required" required>
+                </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label >Description</label>
+                        <textarea type="text" class="form-control" name="description"  required></textarea>
+                    </div>
+                    </div>
+                
+            
+            
+            
+            
+            <input type="submit" class="btn btn-primary" style="width: 200px;" value="submit">
+    </form>
+    {% include 'footer.html'%}
+    {%ifequal error "no" %}
+    <script>
+        alert("job details added succesfully");
+        window.location=('{% url 'job_list' %}');
+    </script>
+    {%endifequal%}
+    {% ifequal error "yes" %}
+    <script>
+        alert("Something went wrong,try again");
+    </script>
+    {% endifequal %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'admin_navigation.html' %}
+<marquee behavior="" direction="" style="font-family: monotype corsiva;font-size:25px;color:darkcyan;background-color:black; font-weight:bold;" >View all recruiters</marquee>
+<hr>
+<div class="container">
+    <table class="table table-hover " id="example">
+        <thead>
+            <tr style="background-color: #000080;color:white">
+                <th>S.NO.</th>
+                <th>Full Name</th>
+                <th>Email ID</th>
+                <th>Contact</th>
+                <th>Gender</th>
+                <th>Company</th>
+                <th>Image</th>
+                <th>status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr style="background-color:#DEB887">
+                <td>{{forloop.counter}}</td>
+                <td>{{i.user.first_name}}  {{i.user.last_name}}</td>
+                <td>{{i.user.username}}</td>
+                <td>{{i.mobile}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.company}}</td>
+                
+                <td><img src="{{i.image.url}}" style="border-radius: 50%;height:100px;width:100px;"></td>
+                <td>{{i.status}}</td>
+                <td><a href="{% url 'change_status' i.id %}" class="btn btn-success btn-sm">change status</a>
+                |<a href="{% url 'delete_recruiter' i.user.id %}" class="btn btn-danger btn-sm">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

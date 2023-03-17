@@ -1,0 +1,101 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'recruiter_navigation.html' %}
+
+
+<marquee behavior="" direction="" style="font-family: monotype corsiva;font-size:25px;color:darkcyan;background-color:black; font-weight:bold;" >
+    Profile</marquee>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+
+<form action="" method="post" class=" mt-5" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >First Name</label>
+            <input type="text" class="form-control" name="fname" value="{{recruiter.user.first_name}}" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label >Last Name</label>
+            <input type="text" class="form-control" name="lname" value="{{recruiter.user.last_name}}" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label >contact</label>
+            <input type="text" class="form-control" name="contact" value="{{recruiter.mobile}}" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label >company</label>
+            <input type="text" class="form-control" name="company" value="{{recruiter.company}}" readonly required>
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label >Email ID</label>
+                <input type="text" class="form-control" name="email" value="{{recruiter.user.username}}" readonly required>
+            </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-12">
+                    <label >Gender</label>
+                    {% if recruiter.gender == "male" %}
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRaddioInline1" name="gender" class="custom-control-input" value="male" checked required>
+                        <label for="customRaddioInline1" class="custom-control-label">Male</label>
+                        <input type="radio" id="customRaddioInline2" name="gender" class="custom-control-input" value="female" required>
+                        <label for="customRaddioInline2" class="custom-control-label">Female</label>
+                    </div>
+                    {% else %}
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRaddioInline1" name="gender" class="custom-control-input" value="male" required>
+                        <label for="customRaddioInline1" class="custom-control-label">Male</label>
+                        <input type="radio" id="customRaddioInline2" name="gender" class="custom-control-input" value="female" checked required>
+                        <label for="customRaddioInline2" class="custom-control-label">Female</label>
+                    </div>
+                    {% endif %}
+                       
+                    
+                    
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Image</label>
+                    <input type="file" class="form-control" name="image">
+                </div>
+            </div>
+            
+            
+            
+            
+            <input type="submit" class="btn btn-primary" width="200px" value="submit">
+    </form>
+    
+</div>   <!--coumn1 end-->
+
+<div class="col-sm-4 mt-5 text-center">
+<img src="{{recruiter.image.url}}" width="300px" height="300px">
+</div>
+
+</div>
+
+</div>
+    
+{% ifequal error "no" %}
+<script>
+    alert("profile updated  successfully");
+    window.location=('{% url 'recruiter_home' %}');
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    alert("something went wrong,try again");
+</script>
+{% endifequal %}
+{% endblock %}

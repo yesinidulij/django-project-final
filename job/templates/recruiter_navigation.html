@@ -1,0 +1,102 @@
+<html>
+<head>
+    {% load static %}
+    <title>job portal</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .nav-link{
+        color:white;
+        margin-right:4px;
+    }
+    .nav-link:hover{
+        font-weight: bold;
+        color:yellow !important;
+        background-color: red;
+        border-radius: 10px;
+    }
+    .navbar-brand{
+        font-weight: bold;
+        color:white;
+        padding-left: 5px;
+    }
+    .navbar-brand:hover{
+        color: yellow !important;
+        
+    }
+    #navbar{
+        list-style-type: none;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-3" >
+                <img src="{% static 'images/index.jpg '%}" alt="" width="180px" height="150px">
+            </div>
+
+            <div class="col-sm-6 text-center" mt-5>
+                <span style="font-weight: bold; font-size:30px">
+
+                    <span style="color:red">Guraghe</span>
+                    <span style="color:green">job portal</span>
+
+                </span>
+                
+            </div>  
+
+            <div class="col-sm-3" mt-5 style="padding-left: 10%;">
+                <span style="font-weight: bold; font-size:30px">
+                <span><i  class="fa fa-twitter pl-1"></i></span>
+                <span><i  class="fa fa-linkedin pl-1"></i></span>
+                <span><i  class="fa fa-instagram pl-1"></i></span>
+                <span><i  class="fa fa-telegram pl-1"></i></span>
+                <span><i  class="fa fa-facebook pl-1"></i></span>
+
+
+            </span>
+                
+            </div>  
+
+
+        </div>
+    </div>
+
+<nav class="navbar navbar-expand-sm" style="background-color:maroon">
+    <a href="" class="navbar-brand " style="font-family:'monotype corsiva';"> job portal</a>
+    <ul class="navbar-nav" id="navbar" >
+        <li class="nav-item">
+            <a href="{% url 'recruiter_home' %}" class="nav-link" style="margin-left: 280px;"><i class="fa fa-home" style="margin-right:3px ;"></i>Home</a>
+        </li>
+        
+        <li class="nav-item">
+            <a href="{% url 'add_job' %}" class="nav-link" style="margin-left:5px ;"><i class="fa fa-plus-circle" style="margin-right:3px ;"></i> add job</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'job_list' %}" class="nav-link" style="margin-left:5px ;" ><i class="fa fa-list-ol" style="margin-right:3px ;"></i> job list</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'applied_candidatelist' %}" class="nav-link" style="margin-left:5px ;" ><i class="fa fa-list-ol" style="margin-right:3px ;"></i> candidates applied</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'change_passwordrecruiter' %}" class="nav-link" style="margin-left:5px ;"><i class="fa fa-user-circle" style="margin-right:3px ;"></i>change password</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'Logout' %}" class="nav-link" style="margin-left:5px ;" ><i class="fa fa-sign-out" style="margin-right:3px ;"></i>Logout</a>
+        </li>
+       
+        <a href="" class="navbar-brand " style="font-family:'monotype corsiva';margin-left:20px;"> {{request.user.first_name}} {{request.user.last_name}}</a>
+    </ul>
+</nav>
+
+</body>
+</html>

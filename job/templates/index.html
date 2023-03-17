@@ -1,0 +1,92 @@
+{% load static %}
+
+{% block body %}
+
+<style>
+    .container{
+        max-width: 90%;
+    }
+    .content{
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        color:white;
+        height: 30px;
+        width: 91%;
+    }
+
+</style>
+
+
+{% include 'navigation.html' %}
+<div class="container-fluid" style="margin-top: 1%;">
+<img src="{% static 'images/professionalgirl.jpg'%}" alt="" style="height:450px;width:100%;">
+</div>
+<div class="container" style="background-color: black;height:600px;margin-top:3%">
+    <h1 class="text-center " style="color:white">--------| our placed customers |--------</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{% static 'images/f2.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+             dashen bank
+        </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <img src="{% static 'images/f3.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+             textile and garment
+        </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <img src="{% static 'images/f4.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+             civil engineering
+        </div>
+        </div>
+
+        <div class="col-md-3">
+            <img src="{% static 'images/f5.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+             wolkite university hospital
+        </div>
+        </div>
+
+        <div class="col-md-3">
+            <img src="{% static 'images/f6.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+            Commercial Bank of Ethiopia
+        </div>
+        </div>
+
+        <div class="col-md-3">
+            <img src="{% static 'images/professionalgirl.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+             awash bank
+        </div>
+        </div>
+
+        <div class="col-md-3">
+            <img src="{% static 'images/f7.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+             Information Technology
+        </div>
+        </div>
+
+        <div class="col-md-3">
+            <img src="{% static 'images/f8.jpg' %}" alt="" style="width:100%;border-radius:50%;margin-top:5%;height: 200px;">
+        <div class="content">
+             guraghe airport
+        </div>
+        </div>
+
+
+
+    </div>
+</div>
+{% include  'footer.html' %}
+{% endblock%}
